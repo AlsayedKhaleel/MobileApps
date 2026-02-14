@@ -1,0 +1,6 @@
+Ah, classic Flutter gotcha 😄 — your dialog code itself is fine. The issue is almost always which BuildContext you’re using.
+Since you mentioned that your Stateful widget contains a MaterialApp, this is the root of the problem.
+What’s going wrong
+showDialog needs a BuildContext that is below a Navigator.
+When you put a MaterialApp inside a Stateful widget, you often end up calling showDialog with a context that belongs to a widget above the Navigator,
+ so Flutter has nowhere to display the dialog → nothing appears, no error.
