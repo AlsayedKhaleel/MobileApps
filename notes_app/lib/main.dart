@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubit/cubit/notes_cubit.dart';
 import 'package:notes_app/notes_hive.dart';
 
@@ -23,24 +24,6 @@ class MyApp extends StatelessWidget {
   // read the text inserted by the user at the text form field.
   TextEditingController inputFieldController = TextEditingController();
 
-  // some background colors for notes.
-  static List<Color> colors = [
-    Color(0xFF91F48F),
-    Color(0xFFFFF599),
-    Color(0xFFFF9E9E),
-    Color(0xFFB69CFF),
-    Color(0xFF7FE57C),
-    Color(0xFF9EFFFF),
-    Color(0xFFA8F7A6),
-    Color(0xFFB2FFFF),
-    Color(0xFFFFF8B5),
-    Color(0xFFFFB3B3),
-    Color(0xFFC5B3FF),
-    Color(0xFFFF8A8A),
-    Color(0xFFA88CFF),
-    Color(0xFF8CF7F7),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<NotesCubit>();
@@ -49,9 +32,9 @@ class MyApp extends StatelessWidget {
       home: Builder(
         builder: (context) {
           return Scaffold(
-            backgroundColor: Color(0xFF252525),
+            backgroundColor: backgroundColor,
             appBar: AppBar(
-              backgroundColor: Color(0xFF3B3B3B),
+              backgroundColor: backgroundColor,
               title: const Text(
                 "Notes",
                 style: TextStyle(
@@ -64,12 +47,12 @@ class MyApp extends StatelessWidget {
               actions: [
                 Container(
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 178, 157, 157),
+                    color: Color(0xFF3B3B3B),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   width: 50,
                   height: 50,
-                  child: Icon(Icons.search),
+                  child: Icon(Icons.search, color: Colors.white,),
                 ),
                 SizedBox(width: 15),
                 InkWell(
@@ -78,12 +61,12 @@ class MyApp extends StatelessWidget {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 178, 157, 157),
+                      color: Color(0xFF3B3B3B),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     width: 50,
                     height: 50,
-                    child: Icon(Icons.delete),
+                    child: Icon(Icons.delete, color: Colors.white,),
                   ),
                 ),
                 SizedBox(width: 10),
@@ -162,7 +145,8 @@ class MyApp extends StatelessWidget {
 
             // adding a new note.
             floatingActionButton: FloatingActionButton(
-              backgroundColor: Color.fromARGB(255, 178, 157, 157),
+              backgroundColor: backgroundColor,
+              foregroundColor: Colors.white,
               child: Icon(Icons.add),
 
               onPressed: () async {
